@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #060612;
+  --color-foreground: #f0f0ff;
+
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-glow: rgba(120, 100, 255, 0.3);
+
+  --color-neutral-dark: #0a0a18;
+  --color-neutral-card: rgba(12, 12, 28, 0.65);
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #060612; }
+::-webkit-scrollbar-thumb { background: #2a1f5c; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4c3b9e; }
+
+/* ─── Reset & Base ──────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Grid & Dot Patterns ───────────────────────────────── */
+.bg-grid-pattern {
+  background-size: 48px 48px;
+  background-image:
+    linear-gradient(to right, rgba(120, 100, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 100, 255, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-size: 22px 22px;
+  background-image: radial-gradient(rgba(140, 120, 255, 0.06) 1px, transparent 1px);
+}
+
+/* ─── Glassmorphism ─────────────────────────────────────── */
+.glass {
+  background: rgba(10, 8, 30, 0.70);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(120, 100, 255, 0.10);
+}
+
+.glass-nav {
+  background: rgba(6, 6, 18, 0.80);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(120, 100, 255, 0.07);
+}
+
+.glass-card {
+  background: rgba(12, 10, 32, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(120, 100, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(140, 120, 255, 0.22);
+  box-shadow: 0 12px 40px -12px rgba(100, 60, 220, 0.35);
+}
+
+/* ─── Spotlight Card ────────────────────────────────────── */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(140, 100, 255, 0.08),
+    transparent 40%
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.spotlight-card:hover::before { opacity: 1; }
+
+/* ─── Text Gradients ────────────────────────────────────── */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #ffffff 30%, #b8b0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue-purple {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan-teal {
+  background: linear-gradient(135deg, #22d3ee 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold-orange {
+  background: linear-gradient(135deg, #fbbf24 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Animated glow border ──────────────────────────────── */
+@keyframes border-glow {
+  0%, 100% { box-shadow: 0 0 12px 2px rgba(120, 80, 255, 0.20); }
+  50%       { box-shadow: 0 0 28px 6px rgba(180, 100, 255, 0.35); }
+}
+
+.glow-border {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* ─── Float Animations ──────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-14px) scale(1.03); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(12px) rotate(3deg); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); opacity: 0.6; }
+  70%  { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+.animate-float-slow    { animation: float 9s ease-in-out infinite; }
+.animate-float-medium  { animation: float 6s ease-in-out infinite; }
+.animate-float-fast    { animation: float-reverse 4s ease-in-out infinite; }
+.animate-pulse-ring    { animation: pulse-ring 2.5s ease-out infinite; }
+
+/* ─── Utility ───────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
