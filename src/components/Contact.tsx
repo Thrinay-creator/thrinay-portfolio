@@ -236,11 +236,7 @@ export default function Contact() {
                 value="New Portfolio Contact Form Submission"
               />
 
-              <input
-                type="hidden"
-                name="_next"
-                value="https://formspree.io/thanks"
-              />
+           
 
               <button
                 type="submit"
