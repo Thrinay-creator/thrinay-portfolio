@@ -61,17 +61,16 @@ export default function Contact() {
 
   setIsSubmitting(true);
 
-  const response = await fetch(
-    "https://formspree.io/f/mkoakvge",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    }
-  );
+ const response = await fetch(
+  "https://formspree.io/f/mkoakvge",
+  {
+    method: "POST",
+    body: new FormData(e.currentTarget),
+    headers: {
+      Accept: "application/json",
+    },
+  }
+);
 
   setIsSubmitting(false);
 
