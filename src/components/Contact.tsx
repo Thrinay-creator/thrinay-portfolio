@@ -45,8 +45,7 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-const [isSubmitting] = useState(false);
-const [submitSuccess] = useState(false);
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -157,7 +156,7 @@ const [submitSuccess] = useState(false);
         {/* Contact Form */}
         <div className="lg:col-span-7">
           <SpotlightCard className="p-8" glowColor="rgba(255, 255, 255, 0.02)">
-            {submitSuccess ? (
+             (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -231,26 +230,25 @@ const [submitSuccess] = useState(false);
                     className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs font-sans text-white focus:outline-none focus:border-white/20 transition-all placeholder-neutral-600 resize-none"
                   />
                 </div>
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Portfolio Contact Form Submission"
+              />
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3 rounded-lg bg-white text-black font-semibold text-xs flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-3.5 h-3.5" />
-                      Send Message
-                    </>
-                  )}
-                </button>
+              <input
+                type="hidden"
+                name="_next"
+                value="https://formspree.io/thanks"
+              />
+
+              <button
+                type="submit"
+              >
+                Send Message
+              </button>
               </form>
-            )}
+            )
           </SpotlightCard>
         </div>
 
