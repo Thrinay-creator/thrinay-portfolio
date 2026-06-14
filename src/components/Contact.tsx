@@ -53,47 +53,7 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
- const handleSubmit = async (
-  e: React.FormEvent<HTMLFormElement>
-) => {
-  console.log("FORM SUBMITTED");
-  e.preventDefault();
-
-  setIsSubmitting(true);
-
- const response = await fetch(
-  "https://formspree.io/f/mkoakvge",
-  {
-    method: "POST",
-    body: new FormData(e.currentTarget),
-    headers: {
-      Accept: "application/json",
-    },
-  }
-);
-  
-
-console.log("Status:", response.status);
-console.log("OK:", response.ok);
-console.log("Response:", await response.text());
-  setIsSubmitting(false);
-
-  if (response.ok) {
-    setSubmitSuccess(true);
-
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-
-    setTimeout(() => setSubmitSuccess(false), 5000);
-  } else {
-    alert("Failed to send message.");
-  }
-};
-
+ 
   return (
     <section id="contact" className="py-24 px-4 md:px-8 max-w-6xl mx-auto border-t border-white/5">
       <div className="flex flex-col items-center text-center mb-16">
