@@ -156,19 +156,7 @@ export default function Contact() {
         {/* Contact Form */}
         <div className="lg:col-span-7">
           <SpotlightCard className="p-8" glowColor="rgba(255, 255, 255, 0.02)">
-             (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center text-center py-12"
-              >
-                <CheckCircle className="w-12 h-12 text-emerald-500 mb-4 animate-bounce" />
-                <h3 className="text-lg font-bold text-white font-sans">Message Sent Successfully!</h3>
-                <p className="text-xs text-neutral-400 mt-2 font-sans max-w-sm leading-relaxed">
-                  Thank you for reaching out. I have received your message and will get back to you as soon as possible.
-                </p>
-              </motion.div>
-            ) : (
+              (
               <form
                 action="https://formspree.io/f/mkoakvge"
                   method="POST"
@@ -244,7 +232,7 @@ export default function Contact() {
                 Send Message
               </button>
               </form>
-            )
+            
           </SpotlightCard>
         </div>
 
