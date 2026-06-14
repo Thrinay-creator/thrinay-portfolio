@@ -71,7 +71,11 @@ export default function Contact() {
     },
   }
 );
+  
 
+console.log("Status:", response.status);
+console.log("OK:", response.ok);
+console.log("Response:", await response.text());
   setIsSubmitting(false);
 
   if (response.ok) {
@@ -206,7 +210,11 @@ export default function Contact() {
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form
+                action="https://formspree.io/f/mkoakvge"
+                  method="POST"
+                  className="space-y-4"
+                >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="name" className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Your Name</label>
