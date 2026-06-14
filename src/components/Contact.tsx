@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { Mail, Phone } from "lucide-react";
 import SpotlightCard from "./SpotlightCard";
 
@@ -39,18 +38,7 @@ const HackerRankIcon = () => (
 );
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
 
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
  
   return (
@@ -158,80 +146,68 @@ export default function Contact() {
           <SpotlightCard className="p-8" glowColor="rgba(255, 255, 255, 0.02)">
               
               <form
-                action="https://formspree.io/f/mkoakvge"
-                  method="POST"
-                  className="space-y-4"
-                >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="name" className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Your Name</label>
-                    <input
-                      required
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="John Doe"
-                      className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs font-sans text-white focus:outline-none focus:border-white/20 transition-all placeholder-neutral-600"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="email" className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Your Email</label>
-                    <input
-                      required
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@example.com"
-                      className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs font-sans text-white focus:outline-none focus:border-white/20 transition-all placeholder-neutral-600"
-                    />
-                  </div>
-                </div>
-                
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="subject" className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Subject</label>
-                  <input
-                    required
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Opportunity / Collaboration"
-                    className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs font-sans text-white focus:outline-none focus:border-white/20 transition-all placeholder-neutral-600"
-                  />
-                </div>
+  action="mailto:jayavaruput@gmail.com"
+  method="POST"
+  encType="text/plain"
+  className="space-y-4"
+>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="flex flex-col gap-1.5">
+      <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+        Your Name
+      </label>
+      <input
+        type="text"
+        name="name"
+        placeholder="John Doe"
+        className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs text-white"
+      />
+    </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Message</label>
-                  <textarea
-                    required
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    placeholder="Hello Thrinay, I would love to connect..."
-                    className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs font-sans text-white focus:outline-none focus:border-white/20 transition-all placeholder-neutral-600 resize-none"
-                  />
-                </div>
-              <input
-                type="hidden"
-                name="_subject"
-                value="New Portfolio Contact Form Submission"
-              />
+    <div className="flex flex-col gap-1.5">
+      <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+        Your Email
+      </label>
+      <input
+        type="email"
+        name="email"
+        placeholder="john@example.com"
+        className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs text-white"
+      />
+    </div>
+  </div>
 
-           
+  <div className="flex flex-col gap-1.5">
+    <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+      Subject
+    </label>
+    <input
+      type="text"
+      name="subject"
+      placeholder="Opportunity / Collaboration"
+      className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs text-white"
+    />
+  </div>
 
-              <button
-                type="submit"
-              >
-                Send Message
-              </button>
-              </form>
+  <div className="flex flex-col gap-1.5">
+    <label className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+      Message
+    </label>
+    <textarea
+      name="message"
+      rows={5}
+      placeholder="Hello Thrinay, I would love to connect..."
+      className="px-4 py-2.5 rounded-lg border border-white/5 bg-neutral-950/40 text-xs text-white resize-none"
+    />
+  </div>
+
+  <button
+    type="submit"
+    className="w-full py-3 rounded-lg bg-white text-black font-semibold text-xs"
+  >
+    Send Message
+  </button>
+</form>
             
           </SpotlightCard>
         </div>
