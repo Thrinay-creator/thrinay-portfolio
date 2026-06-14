@@ -56,6 +56,7 @@ export default function Contact() {
  const handleSubmit = async (
   e: React.FormEvent<HTMLFormElement>
 ) => {
+  console.log("FORM SUBMITTED");
   e.preventDefault();
 
   setIsSubmitting(true);
