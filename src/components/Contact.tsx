@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { Mail, Phone } from "lucide-react";
 import SpotlightCard from "./SpotlightCard";
-import { Mail, Phone, Send, CheckCircle } from "lucide-react";
+
 
 // Custom SVGs for coding platforms
 const GithubIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -156,7 +156,7 @@ export default function Contact() {
         {/* Contact Form */}
         <div className="lg:col-span-7">
           <SpotlightCard className="p-8" glowColor="rgba(255, 255, 255, 0.02)">
-              (
+              
               <form
                 action="https://formspree.io/f/mkoakvge"
                   method="POST"
